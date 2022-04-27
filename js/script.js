@@ -1,3 +1,6 @@
+// avoid browser caches data.js by inserting an unique identifier
+document.getElementById('datajs').src = 'js/data.js' + '?v=' + Date.now();
+
 const jsonData = JSON.parse(data);
 
 var parent = document.querySelector('.m-p-g__thumbs');
