@@ -1,7 +1,22 @@
-// avoid browser caches data.js by inserting an unique identifier
-document.getElementById('datajs').src = 'js/data.js' + '?v=' + Date.now();
+var base_url = "https://raw.githubusercontent.com/ScienisTmiaoT/photogallery/main";
+var name_url = base_url + "/js/data.json" + '?v=' + Date.now();
 
-const jsonData = JSON.parse(data);
+fetch(name_url).then(function (response) {
+  // The API call was successful!
+  if (response.ok) {
+      return response.json();
+  } else {
+      return Promise.reject(response);
+  }
+}).then(function (data) {
+  // This is the JSON from our response
+  drive(data);
+}).catch(function (err) {
+  // There was an error
+  console.warn('Something went wrong.', err);
+});
+
+function driver(jsonData) {
 
 var parent = document.querySelector('.m-p-g__thumbs');
 
@@ -42,3 +57,4 @@ window.addEventListener('scroll', () => {
       }
     }
   });
+}
