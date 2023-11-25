@@ -10,7 +10,7 @@ fetch(name_url).then(function (response) {
   }
 }).then(function (data) {
   // This is the JSON from our response
-  drive(data);
+  driver(data);
 }).catch(function (err) {
   // There was an error
   console.warn('Something went wrong.', err);
